@@ -77,16 +77,18 @@ pipeline {
              script{
               dockerImage = docker.build registry + ":v$BUILD_NUMBER"
            }
+        }
+
         stage('Upload Image'){
-         steps{
-          scripts {
-            docker.withRegistry('', registryCredential) {
+          steps{
+            scripts {
+             docker.withRegistry('', registryCredential) {
               dockerImage.push("V$BUILD_NUMBER")
               dockerImage.push('latest')
             }
           }
-         }
         }
+
 
         stage('Remove Unused docker image') {
          steps{
@@ -101,5 +103,4 @@ pipeline {
            }
         }
     }
-
 }
