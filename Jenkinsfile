@@ -7,7 +7,7 @@ pipeline {
     }
 */
     environment {
-        registry = "baylon-obinna/vproappdock:5"
+        registry = "baylon-obinna/vproappdock"
         registryCredential = 'dockerhub'
     }
 
